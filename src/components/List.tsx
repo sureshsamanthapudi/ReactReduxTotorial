@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 const mapStateToProps = (state: any) => {
+  console.log("state",state)
   return { articles: state.articles };
 };
 
@@ -15,11 +16,12 @@ class ConnectedList extends Component<IComponentProps,{}> {
        super(props)
    } 
    public render() {
+    console.log("props",this.props)    
     const {articles} = this.props
        return (
             <ul>
-            {articles.map((el: any) => (
-            <li key={el.id}>{el.title}</li>
+            {articles.map((el: any,index: number) => (
+            <li key={index}>{el.title}</li>
             ))}
         </ul>
        )

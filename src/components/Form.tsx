@@ -27,9 +27,10 @@ class ConnectedForm extends Component<IComponentProps,IComponentState> {
         this.handleChange = this.handleChange.bind(this);
     }
 
-    private handleSubmit() {
+    private handleSubmit(event: any) {
+        event.preventDefault();
         const {title} = this.state;
-        this.props.addArticle(title)
+        this.props.addArticle({ title });
         this.setState({
             title: ''
         })
