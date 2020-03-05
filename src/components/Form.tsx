@@ -1,15 +1,17 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import {addArticle} from '../actions/main'
+import {addArticle,  fetchGithubData} from '../actions/main'
 
 function mapDispatchToProps(dispatch: any) {
    return {
-        addArticle: (text: any) => dispatch(addArticle(text))
+        addArticle: (text: any) => dispatch(addArticle(text)),
+        getUser: (title: any) => dispatch(fetchGithubData())
     }
 }
 
 interface IComponentProps{
     addArticle: any
+    getUser: any
 }
 
 interface IComponentState {
@@ -28,12 +30,23 @@ class ConnectedForm extends Component<IComponentProps,IComponentState> {
     }
 
     private handleSubmit(event: any) {
+      // this.getUsers(event);
+      this.handleRedux(event)
+    }
+
+    private handleRedux(event: any) {
         event.preventDefault();
         const {title} = this.state;
         this.props.addArticle({ title });
         this.setState({
             title: ''
         })
+    }
+
+    private getUsers(event: any){
+        event.preventDefault();
+        const {title} = this.state;
+        this.props.getUser(title);
     }
 
     private handleChange(event: any) {

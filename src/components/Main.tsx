@@ -9,10 +9,10 @@ const Main = () => {
       <List/>
     </div>
   <div>
-    <h2>Add a new article</h2>
+    <h2>Add a new articles</h2>
     <Form />
   </div>
   </React.Fragment>
   )
 }
-  export default Main;
+export default Main;
